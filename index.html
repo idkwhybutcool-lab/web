@@ -5,70 +5,134 @@
   <title>grunvhaze</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="grunvhaze — music, links, latest release" />
+
   <style>
     body {
       margin: 0;
-      padding: 24px;
-      background-color: #dcdcdc;
+      padding: 28px;
+      background-color: #dcdcdc; /* changeable background */
       font-family: Times, "Times New Roman", serif;
       color: #000;
     }
+
     .container {
       max-width: 900px;
       margin: 0 auto;
     }
+
+    /* Profile image */
     .profile {
-      width: 120px;
-      height: 120px;
+      width: 160px; /* bigger image */
+      height: 160px;
       background-color: #9cc;
-      margin-bottom: 16px;
+      overflow: hidden;
+      margin-bottom: 18px;
     }
+
+    .profile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Header text */
     h1 {
-      font-size: 36px;
-      margin: 0 0 8px 0;
+      font-size: 44px; /* bigger text */
+      margin: 0 0 10px 0;
+      font-weight: bold;
+      letter-spacing: 0.18em; /* spaced name */
     }
+
     .release {
-      font-size: 16px;
+      font-size: 20px; /* bigger */
       color: #0000cc;
       text-decoration: underline;
       display: inline-block;
-      margin-bottom: 20px;
+      margin-bottom: 26px;
     }
+
+    .divider {
+      margin: 26px 0;
+      border-top: 1px solid #999;
+    }
+
+    /* Links */
+    .links {
+      font-size: 22px; /* bigger links */
+      line-height: 1.6;
+    }
+
+    .link-block {
+      margin-bottom: 18px;
+    }
+
     .links a {
       color: #0000cc;
       text-decoration: underline;
+      display: inline-block;
+    }
+
+    .label {
       display: block;
-      line-height: 1.8;
+      font-size: 16px;
+      color: #000;
+      margin-top: 4px;
     }
-    .divider {
-      margin: 24px 0;
-      border-top: 1px solid #999;
-    }
+
+    /* Desktop layout */
     @media (min-width: 700px) {
       .layout {
         display: grid;
-        grid-template-columns: 140px 1fr;
-        gap: 24px;
+        grid-template-columns: 180px 1fr; /* match bigger image */
+        gap: 28px;
+        align-items: start;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container layout">
-    <div class="profile"></div>
-    <div>
-      <h1>grunvhaze</h1>
-      <a class="release" href="https://your-latest-release-link" target="_blank">
-        "this is all my fault" — out now
-      </a>
-      <div class="divider"></div>
-      <div class="links">
-        <a href="#">Spotify</a>
-        <a href="#">YouTube Music</a>
-        <a href="#">Instagram</a>
-        <a href="#">TikTok</a>
+  <div class="container">
+
+    <div class="layout">
+      <!-- Profile Image -->
+      <div class="profile">
+        <img src="profile.jpg" alt="grunvhaze profile" />
+      </div>
+
+      <!-- Content -->
+      <div>
+        <h1>grunvhaze</h1>
+
+        <a class="release" href="https://your-latest-release-link" target="_blank">
+          "this is all my fault" — out now
+        </a>
+
+        <div class="divider"></div>
+
+        <div class="links">
+          <div class="link-block">
+            <a href="https://open.spotify.com/artist/yourid" target="_blank">Spotify</a>
+            <span class="label">listen to me on</span>
+          </div>
+
+          <div class="link-block">
+            <a href="https://music.youtube.com/channel/yourid" target="_blank">YouTube Music</a>
+            <span class="label">listen to me on</span>
+          </div>
+
+          <div class="link-block">
+            <a href="https://www.instagram.com/yourusername" target="_blank">Instagram</a>
+            <span class="label">follow me on</span>
+          </div>
+
+          <div class="link-block">
+            <a href="https://www.tiktok.com/@yourusername" target="_blank">TikTok</a>
+            <span class="label">follow me on</span>
+          </div>
+        </div>
       </div>
     </div>
+
   </div>
 </body>
 </html>
