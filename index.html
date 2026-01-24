@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>grunvhaze</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="grunvhaze — music, links, latest release" />
+  <meta name="description" content="grunvhaze — music, links" />
 
   <style>
     @font-face {
@@ -22,7 +22,6 @@
       color: #000;
       text-transform: lowercase;
       line-height: 1.8;
-      font-weight: normal;
     }
 
     * {
@@ -32,7 +31,6 @@
     .container {
       max-width: 900px;
       margin: 0 auto;
-      padding: 0;
     }
 
     .profile {
@@ -52,22 +50,19 @@
       font-size: 44px;
       margin: 0 0 14px 0;
       letter-spacing: 0.25em;
-      font-weight: normal;
-
-      /* adjusted underline */
       text-decoration-line: underline;
-      text-decoration-thickness: 2px;   /* thicker */
-      text-underline-offset: 7px;       /* lower */
+      text-decoration-thickness: 2px;
+      text-underline-offset: 7px;
       text-decoration-color: #000;
     }
 
+    /* latest release — blue + underline */
     .release {
       font-size: 20px;
       color: #0000cc;
       text-decoration: underline;
       display: inline-block;
       margin-bottom: 30px;
-      font-weight: normal;
     }
 
     .divider {
@@ -77,29 +72,18 @@
 
     .links {
       font-size: 24px;
-      line-height: 1.9;
       letter-spacing: 0.05em;
-      font-weight: normal;
     }
 
     .link-block {
-      margin-bottom: 22px;
+      margin-bottom: 40px;
     }
 
+    /* social links — black, no underline */
     .links a {
-      color: #0000cc;
-      text-decoration: underline;
-      display: inline-block;
-      font-weight: normal;
-    }
-
-    .label {
-      display: block;
-      font-size: 20px;
       color: #000;
-      margin-top: 6px;
-      letter-spacing: 0.08em;
-      font-weight: normal;
+      text-decoration: none;
+      display: inline-block;
     }
 
     @media (min-width: 700px) {
@@ -112,9 +96,9 @@
     }
   </style>
 </head>
+
 <body>
   <div class="container">
-
     <div class="layout">
       <div class="profile">
         <img src="profile.jpg" alt="grunvhaze profile" />
@@ -131,28 +115,31 @@
 
         <div class="links">
           <div class="link-block">
-            <a href="https://open.spotify.com/artist/7aHdvxqX9ccCI1lozcRbdN?si=Rvz4Lv_zTnCIjQTwJWvsAg" target="_blank">spotify</a>
-            <span class="label">listen to me on spotify</span>
+            <a href="https://open.spotify.com/artist/7aHdvxqX9ccCI1lozcRbdN?si=Rvz4Lv_zTnCIjQTwJWvsAg" target="_blank">
+              spotify
+            </a>
           </div>
 
           <div class="link-block">
-            <a href="https://music.youtube.com/channel/UCYtKMh32mafCvK5OGe6XwCQ" target="_blank">youtube music</a>
-            <span class="label">listen to me on youtube music</span>
+            <a href="https://music.youtube.com/channel/UCYtKMh32mafCvK5OGe6XwCQ" target="_blank">
+              youtube music
+            </a>
           </div>
 
           <div class="link-block">
-            <a href="https://www.instagram.com/grunvhazey/" target="_blank">instagram</a>
-            <span class="label">follow me on instagram</span>
+            <a href="https://www.instagram.com/grunvhazey/" target="_blank">
+              instagram
+            </a>
           </div>
 
           <div class="link-block">
-            <a href="https://www.tiktok.com/@grunvhaze" target="_blank">tiktok</a>
-            <span class="label">follow me on tiktok</span>
+            <a href="https://www.tiktok.com/@grunvhaze" target="_blank">
+              tiktok
+            </a>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </body>
 </html>
