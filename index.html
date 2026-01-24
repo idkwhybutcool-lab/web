@@ -56,12 +56,21 @@
       text-decoration-color: #000;
     }
 
-    .release {
+    /* release / pre-save links */
+    .release,
+    .presave {
       font-size: 20px;
       color: #0000cc;
       text-decoration: underline;
-      display: inline-block;
-      margin-bottom: 30px;
+      display: block;
+    }
+
+    .release {
+      margin-bottom: 10px;
+    }
+
+    .presave {
+      margin-bottom: 6px;
     }
 
     .divider {
@@ -74,7 +83,6 @@
       letter-spacing: 0.05em;
     }
 
-    /* closer spacing */
     .link-block {
       margin-bottom: 20px;
     }
@@ -108,6 +116,14 @@
 
         <a class="release" href="https://your-latest-release-link" target="_blank">
           "this is all my fault" — out now
+        </a>
+
+        <a class="presave" href="https://your-presave-link-1" target="_blank">
+          pre-save "gone by morning"
+        </a>
+
+        <a class="presave" href="https://your-presave-link-2" target="_blank">
+          pre-save "was this everything? w / proove"
         </a>
 
         <div class="divider"></div>
