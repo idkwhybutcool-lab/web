@@ -10,8 +10,9 @@
     body {
       margin: 0;
       padding: 28px;
-      background-color: #dcdcdc; /* changeable background */
-      font-family: Times, "Times New Roman", serif;
+      background-color: #dcdcdc;
+      font-family: "Times New Roman", Times, serif; /* NEW FONT */
+      letter-spacing: 0.08em; /* spaced like example */
       color: #000;
     }
 
@@ -20,9 +21,8 @@
       margin: 0 auto;
     }
 
-    /* Profile image */
     .profile {
-      width: 160px; /* bigger image */
+      width: 160px;
       height: 160px;
       background-color: #9cc;
       overflow: hidden;
@@ -35,20 +35,22 @@
       object-fit: cover;
     }
 
-    /* Header text */
     h1 {
-      font-size: 44px; /* bigger text */
+      font-size: 44px;
       margin: 0 0 10px 0;
-      font-weight: bold;
-      letter-spacing: 0.18em; /* spaced name */
+      font-weight: normal;       /* thin */
+      letter-spacing: 0.35em;    /* spaced letters */
+      text-decoration: underline;
+      text-transform: lowercase;
     }
 
     .release {
-      font-size: 20px; /* bigger */
+      font-size: 20px;
       color: #0000cc;
       text-decoration: underline;
       display: inline-block;
       margin-bottom: 26px;
+      font-weight: normal;
     }
 
     .divider {
@@ -56,10 +58,10 @@
       border-top: 1px solid #999;
     }
 
-    /* Links */
     .links {
-      font-size: 22px; /* bigger links */
+      font-size: 22px;
       line-height: 1.6;
+      font-weight: normal;
     }
 
     .link-block {
@@ -70,6 +72,7 @@
       color: #0000cc;
       text-decoration: underline;
       display: inline-block;
+      font-weight: normal;
     }
 
     .label {
@@ -77,13 +80,13 @@
       font-size: 16px;
       color: #000;
       margin-top: 4px;
+      font-weight: normal;
     }
 
-    /* Desktop layout */
     @media (min-width: 700px) {
       .layout {
         display: grid;
-        grid-template-columns: 180px 1fr; /* match bigger image */
+        grid-template-columns: 180px 1fr;
         gap: 28px;
         align-items: start;
       }
@@ -94,12 +97,10 @@
   <div class="container">
 
     <div class="layout">
-      <!-- Profile Image -->
       <div class="profile">
         <img src="profile.jpg" alt="grunvhaze profile" />
       </div>
 
-      <!-- Content -->
       <div>
         <h1>grunvhaze</h1>
 
