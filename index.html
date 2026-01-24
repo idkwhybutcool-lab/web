@@ -11,11 +11,15 @@
       margin: 0;
       padding: 28px;
       background-color: #dcdcdc;
-      font-family: "Franklin Gothic Medium", "Franklin Gothic", Arial, sans-serif;
+      font-family: "Franklin Gothic", Arial, sans-serif; /* NO MEDIUM */
       color: #000;
       text-transform: lowercase;
-      line-height: 1.8; /* more spacing */
-      font-weight: normal; /* remove bold everywhere */
+      line-height: 1.8;
+      font-weight: 300; /* force lighter */
+    }
+
+    * {
+      font-weight: 300; /* remove bold from EVERYTHING */
     }
 
     .container {
@@ -40,9 +44,9 @@
     h1 {
       font-size: 44px;
       margin: 0 0 14px 0;
-      font-weight: normal;
       letter-spacing: 0.25em;
       text-decoration: underline;
+      font-weight: 300;
     }
 
     .release {
@@ -51,7 +55,7 @@
       text-decoration: underline;
       display: inline-block;
       margin-bottom: 30px;
-      font-weight: normal;
+      font-weight: 300;
     }
 
     .divider {
@@ -62,8 +66,8 @@
     .links {
       font-size: 22px;
       line-height: 1.9;
-      font-weight: normal;
       letter-spacing: 0.05em;
+      font-weight: 300;
     }
 
     .link-block {
@@ -74,7 +78,7 @@
       color: #0000cc;
       text-decoration: underline;
       display: inline-block;
-      font-weight: normal;
+      font-weight: 300;
     }
 
     .label {
@@ -82,8 +86,8 @@
       font-size: 16px;
       color: #000;
       margin-top: 6px;
-      font-weight: normal;
       letter-spacing: 0.08em;
+      font-weight: 300;
     }
 
     @media (min-width: 700px) {
