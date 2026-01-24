@@ -13,7 +13,9 @@
       background-color: #dcdcdc;
       font-family: "Franklin Gothic Medium", "Franklin Gothic", Arial, sans-serif;
       color: #000;
-      text-transform: lowercase; /* everything lowercase */
+      text-transform: lowercase;
+      line-height: 1.8; /* more spacing */
+      font-weight: normal; /* remove bold everywhere */
     }
 
     .container {
@@ -26,7 +28,7 @@
       height: 160px;
       background-color: #9cc;
       overflow: hidden;
-      margin-bottom: 18px;
+      margin-bottom: 24px;
     }
 
     .profile img {
@@ -37,10 +39,10 @@
 
     h1 {
       font-size: 44px;
-      margin: 0 0 10px 0;
-      font-weight: normal;       /* remove bold */
-      letter-spacing: 0.18em;
-      text-decoration: underline; /* underline name */
+      margin: 0 0 14px 0;
+      font-weight: normal;
+      letter-spacing: 0.25em;
+      text-decoration: underline;
     }
 
     .release {
@@ -48,41 +50,47 @@
       color: #0000cc;
       text-decoration: underline;
       display: inline-block;
-      margin-bottom: 26px;
+      margin-bottom: 30px;
+      font-weight: normal;
     }
 
     .divider {
-      margin: 26px 0;
+      margin: 32px 0;
       border-top: 1px solid #999;
     }
 
     .links {
       font-size: 22px;
-      line-height: 1.6;
+      line-height: 1.9;
+      font-weight: normal;
+      letter-spacing: 0.05em;
     }
 
     .link-block {
-      margin-bottom: 18px;
+      margin-bottom: 22px;
     }
 
     .links a {
       color: #0000cc;
       text-decoration: underline;
       display: inline-block;
+      font-weight: normal;
     }
 
     .label {
       display: block;
       font-size: 16px;
       color: #000;
-      margin-top: 4px;
+      margin-top: 6px;
+      font-weight: normal;
+      letter-spacing: 0.08em;
     }
 
     @media (min-width: 700px) {
       .layout {
         display: grid;
         grid-template-columns: 180px 1fr;
-        gap: 28px;
+        gap: 32px;
         align-items: start;
       }
     }
