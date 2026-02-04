@@ -65,8 +65,12 @@
     }
 
     @keyframes ticker-scroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50); }
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
     }
 
     .container {
@@ -201,11 +205,11 @@
     const release = new Date("march 3, 2026 00:00:00").getTime();
 
     function updateCountdown() {
-      const now = new Date().getTime();
+      const now = Date.now();
       let diff = release - now;
 
       if (diff <= 0) {
-        setCountdown("“i’m still here” out now");
+        setCountdown("00 days 00 hours 00 minutes 00 seconds");
         return;
       }
 
@@ -215,7 +219,7 @@
       const seconds = Math.floor((diff / 1000) % 60);
 
       const text =
-        `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds until “i’m still here”`;
+        `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
 
       setCountdown(text);
     }
