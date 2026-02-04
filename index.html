@@ -32,6 +32,46 @@
       font-weight: normal;
     }
 
+    /* ===== scrolling ticker ===== */
+    .ticker-wrap {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      background: #000;
+      color: #fff;
+      z-index: 1000;
+    }
+
+    .ticker {
+      display: inline-block;
+      white-space: nowrap;
+      padding: 10px 0;
+      animation: scroll-left 22s linear infinite;
+    }
+
+    .ticker span {
+      display: inline-block;
+      padding: 0 60px;
+      font-size: 18px;
+      letter-spacing: 0.12em;
+    }
+
+    @keyframes scroll-left {
+      from {
+        transform: translateX(100%);
+      }
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    /* push content below ticker */
+    body {
+      padding-top: 72px;
+    }
+
     .container {
       max-width: 900px;
       margin: 0 auto;
@@ -118,6 +158,16 @@
 </head>
 
 <body>
+
+  <!-- top scrolling ticker -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span>“i’m still here” — 3/3/2026</span>
+      <span>“i’m still here” cd’s signed by me releasing 3/3/2026</span>
+      <span>“i’m still here” — 3/3/2026</span>
+    </div>
+  </div>
+
   <div class="container">
     <div class="layout">
       <div class="profile">
@@ -150,5 +200,6 @@
 
   <!-- bottom-left link -->
   <a href="tracklist.jpg" class="smile-link" target="_blank">:)</a>
+
 </body>
 </html>
