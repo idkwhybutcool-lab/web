@@ -21,19 +21,19 @@
     body {
       margin: 0;
       padding: 28px;
+      padding-top: 84px;
       background-color: #d5cdc0;
       font-family: "faxfont", Arial, sans-serif;
       color: #000;
       text-transform: lowercase;
       line-height: 1.8;
-      padding-top: 80px; /* space for ticker */
     }
 
     * {
       font-weight: normal;
     }
 
-    /* ===== seamless scrolling ticker ===== */
+    /* ===== scrolling ticker ===== */
     .ticker-wrap {
       position: fixed;
       top: 0;
@@ -48,7 +48,7 @@
     .ticker-track {
       display: flex;
       width: max-content;
-      animation: ticker-scroll 26s linear infinite;
+      animation: ticker-scroll 28s linear infinite;
     }
 
     .ticker {
@@ -58,19 +58,15 @@
 
     .ticker span {
       display: inline-block;
-      padding: 0 64px;
-      font-size: 22px; /* bigger text */
+      padding: 0 70px;
+      font-size: 24px;
       letter-spacing: 0.14em;
-      line-height: 48px;
+      line-height: 52px;
     }
 
     @keyframes ticker-scroll {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-50%);
-      }
+      from { transform: translateX(0); }
+      to { transform: translateX(-50); }
     }
 
     .container {
@@ -109,13 +105,8 @@
       display: block;
     }
 
-    .release {
-      margin-bottom: 10px;
-    }
-
-    .presave {
-      margin-bottom: 6px;
-    }
+    .release { margin-bottom: 10px; }
+    .presave { margin-bottom: 6px; }
 
     .divider {
       margin: 32px 0;
@@ -127,14 +118,11 @@
       letter-spacing: 0.05em;
     }
 
-    .link-block {
-      margin-bottom: 20px;
-    }
+    .link-block { margin-bottom: 20px; }
 
     .links a {
       color: #000;
       text-decoration: none;
-      display: inline-block;
     }
 
     @media (min-width: 700px) {
@@ -146,7 +134,6 @@
       }
     }
 
-    /* bottom-left smile link */
     .smile-link {
       position: fixed;
       bottom: 14px;
@@ -166,13 +153,14 @@
       <div class="ticker">
         <span>“i’m still here” — 3/3/2026</span>
         <span>“i’m still here” cd’s signed by me releasing 3/3/2026</span>
-        <span>“i’m still here” — 3/3/2026</span>
+        <span id="countdown"></span>
       </div>
+
       <!-- duplicate for seamless loop -->
       <div class="ticker">
         <span>“i’m still here” — 3/3/2026</span>
         <span>“i’m still here” cd’s signed by me releasing 3/3/2026</span>
-        <span>“i’m still here” — 3/3/2026</span>
+        <span id="countdown-dup"></span>
       </div>
     </div>
   </div>
@@ -197,7 +185,7 @@
         <div class="divider"></div>
 
         <div class="links">
-          <div class="link-block"><a href="https://open.spotify.com/artist/7aHdvxqX9ccCI1lozcRbdN?si=Rvz4Lv_zTnCIjQTwJWvsAg" target="_blank">spotify</a></div>
+          <div class="link-block"><a href="https://open.spotify.com/artist/7aHdvxqX9ccCI1lozcRbdN" target="_blank">spotify</a></div>
           <div class="link-block"><a href="https://soundcloud.com/grunvhaze" target="_blank">soundcloud</a></div>
           <div class="link-block"><a href="https://music.youtube.com/channel/UCYtKMh32mafCvK5OGe6XwCQ" target="_blank">youtube</a></div>
           <div class="link-block"><a href="https://www.instagram.com/grunvhazey/" target="_blank">instagram</a></div>
@@ -207,8 +195,39 @@
     </div>
   </div>
 
-  <!-- bottom-left link -->
   <a href="tracklist.jpg" class="smile-link" target="_blank">:)</a>
+
+  <script>
+    const release = new Date("march 3, 2026 00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      let diff = release - now;
+
+      if (diff <= 0) {
+        setCountdown("“i’m still here” out now");
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      const text =
+        `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds until “i’m still here”`;
+
+      setCountdown(text);
+    }
+
+    function setCountdown(text) {
+      document.getElementById("countdown").textContent = text;
+      document.getElementById("countdown-dup").textContent = text;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 
 </body>
 </html>
