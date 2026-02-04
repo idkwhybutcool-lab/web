@@ -26,13 +26,14 @@
       color: #000;
       text-transform: lowercase;
       line-height: 1.8;
+      padding-top: 80px; /* space for ticker */
     }
 
     * {
       font-weight: normal;
     }
 
-    /* ===== scrolling ticker ===== */
+    /* ===== seamless scrolling ticker ===== */
     .ticker-wrap {
       position: fixed;
       top: 0;
@@ -44,32 +45,32 @@
       z-index: 1000;
     }
 
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: ticker-scroll 26s linear infinite;
+    }
+
     .ticker {
-      display: inline-block;
+      display: flex;
       white-space: nowrap;
-      padding: 10px 0;
-      animation: scroll-left 22s linear infinite;
     }
 
     .ticker span {
       display: inline-block;
-      padding: 0 60px;
-      font-size: 18px;
-      letter-spacing: 0.12em;
+      padding: 0 64px;
+      font-size: 22px; /* bigger text */
+      letter-spacing: 0.14em;
+      line-height: 48px;
     }
 
-    @keyframes scroll-left {
+    @keyframes ticker-scroll {
       from {
-        transform: translateX(100%);
+        transform: translateX(0);
       }
       to {
-        transform: translateX(-100%);
+        transform: translateX(-50%);
       }
-    }
-
-    /* push content below ticker */
-    body {
-      padding-top: 72px;
     }
 
     .container {
@@ -161,10 +162,18 @@
 
   <!-- top scrolling ticker -->
   <div class="ticker-wrap">
-    <div class="ticker">
-      <span>“i’m still here” — 3/3/2026</span>
-      <span>“i’m still here” cd’s signed by me releasing 3/3/2026</span>
-      <span>“i’m still here” — 3/3/2026</span>
+    <div class="ticker-track">
+      <div class="ticker">
+        <span>“i’m still here” — 3/3/2026</span>
+        <span>“i’m still here” cd’s signed by me releasing 3/3/2026</span>
+        <span>“i’m still here” — 3/3/2026</span>
+      </div>
+      <!-- duplicate for seamless loop -->
+      <div class="ticker">
+        <span>“i’m still here” — 3/3/2026</span>
+        <span>“i’m still here” cd’s signed by me releasing 3/3/2026</span>
+        <span>“i’m still here” — 3/3/2026</span>
+      </div>
     </div>
   </div>
 
