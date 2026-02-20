@@ -65,12 +65,8 @@
     }
 
     @keyframes ticker-scroll {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-50%);
-      }
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
     }
 
     .container {
@@ -101,16 +97,13 @@
       text-decoration-color: #000;
     }
 
-    .release,
-    .presave {
+    .release {
       font-size: 20px;
       color: #0000cc;
       text-decoration: underline;
       display: block;
+      margin-bottom: 10px;
     }
-
-    .release { margin-bottom: 10px; }
-    .presave { margin-bottom: 6px; }
 
     .divider {
       margin: 32px 0;
@@ -146,6 +139,32 @@
       text-decoration: none;
       font-size: 18px;
     }
+
+    /* ===== bottom cd ===== */
+    .bottom-cd {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    .bottom-cd img {
+      width: 160px;
+      height: auto;
+      display: block;
+      margin: 0 auto 10px auto;
+    }
+
+    .cd-price {
+      font-size: 18px;
+      letter-spacing: 0.08em;
+    }
+
+    .bottom-cd a {
+      color: inherit;
+      text-decoration: none;
+    }
   </style>
 </head>
 
@@ -160,7 +179,6 @@
         <span id="countdown"></span>
       </div>
 
-      <!-- duplicate for seamless loop -->
       <div class="ticker">
         <span>“i’m still here” — 3/3/2026</span>
         <span>“i’m still here” cd’s signed by me releasing via bandcamp 3/3/2026</span>
@@ -198,6 +216,14 @@
 
   <a href="tracklist.jpg" class="smile-link" target="_blank">i'm still here tracklist</a>
 
+  <!-- bottom center cd -->
+  <div class="bottom-cd">
+    <a href="LINK HERE" target="_blank">
+      <img src="ishcd.png" alt="i'm still here cd" />
+      <div class="cd-price">i'm still here CD | $10</div>
+    </a>
+  </div>
+
   <script>
     const release = new Date("march 3, 2026 00:00:00").getTime();
 
@@ -215,8 +241,7 @@
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
 
-      const text =
-        `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+      const text = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
 
       setCountdown(text);
     }
