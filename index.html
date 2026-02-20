@@ -21,12 +21,15 @@
       margin: 0;
       padding: 28px;
       padding-top: 84px;
-      padding-bottom: 240px;
       background-color: #d5cdc0;
       font-family: "faxfont", Arial, sans-serif;
       color: #000;
       text-transform: lowercase;
       line-height: 1.8;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      box-sizing: border-box;
     }
 
     * { font-weight: normal; }
@@ -66,7 +69,6 @@
     .container { max-width: 900px; margin: 0 auto; }
 
     .profile { width: 200px; height: 200px; background-color: #d5cdc0; overflow: visible; }
-
     .profile img { width: 100%; height: 100%; transform: translateX(-20px); }
 
     h1 {
@@ -102,22 +104,23 @@
       }
     }
 
-    .smile-link {
-      position: fixed;
-      bottom: 14px;
-      left: 14px;
-      color: #000;
-      text-decoration: none;
-      font-size: 18px;
-      z-index: 998;
+    /* ===== bottom CD container wrapper ===== */
+    .bottom-wrapper {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      pointer-events: none; /* allows scrolling underneath */
     }
 
-    /* bottom cd */
     .bottom-cd {
-      position: fixed; /* locked for desktop */
+      position: absolute;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
+      pointer-events: auto; /* allows clicking */
       z-index: 999;
     }
 
@@ -143,6 +146,7 @@
 
 <body>
 
+  <!-- scrolling ticker -->
   <div class="ticker-wrap">
     <div class="ticker-track">
       <div class="ticker">
@@ -185,13 +189,14 @@
     </div>
   </div>
 
-  <a href="tracklist.jpg" class="smile-link" target="_blank">i'm still here tracklist</a>
-
-  <div class="bottom-cd" id="bottom-cd">
-    <a href="LINK HERE" target="_blank">
-      <img src="ishcd.png" alt="i'm still here cd" />
-      <div class="cd-price">i'm still here CD | $10</div>
-    </a>
+  <!-- bottom CD wrapper -->
+  <div class="bottom-wrapper">
+    <div class="bottom-cd" id="bottom-cd">
+      <a href="LINK HERE" target="_blank">
+        <img src="ishcd.png" alt="i'm still here cd" />
+        <div class="cd-price">i'm still here CD | $10</div>
+      </a>
+    </div>
   </div>
 
   <script>
@@ -217,15 +222,15 @@
     updateCountdown();
     setInterval(updateCountdown,1000);
 
-    // mobile fixed bottom lock
-    const bottomCD = document.getElementById('bottom-cd');
-    function fixBottomCD(){
+    // mobile viewport fix for bottom CD
+    function updateBottomCD() {
       const vh = window.innerHeight;
-      bottomCD.style.bottom = '20px';
+      const bottomWrapper = document.querySelector('.bottom-wrapper');
+      bottomWrapper.style.height = vh + 'px';
     }
-    window.addEventListener('resize', fixBottomCD);
-    window.addEventListener('scroll', fixBottomCD);
-    fixBottomCD();
+    window.addEventListener('resize', updateBottomCD);
+    window.addEventListener('orientationchange', updateBottomCD);
+    updateBottomCD();
   </script>
 
 </body>
