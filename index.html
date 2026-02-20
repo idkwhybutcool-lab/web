@@ -1,166 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>grunvhaze</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="grunvhaze — music, links" />
+<meta charset="UTF-8" />
+<title>grunvhaze</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="grunvhaze — music, links" />
 
-  <link rel="icon" href="profile.jpg" type="image/jpeg">
-  <link rel="apple-touch-icon" href="profile.jpg">
+<link rel="icon" href="profile.jpg" type="image/jpeg">
+<link rel="apple-touch-icon" href="profile.jpg">
 
-  <style>
-    @font-face {
-      font-family: "faxfont";
-      src: url("Faxfont Fine Regular.otf") format("opentype");
-    }
+<style>
+@font-face {
+  font-family: "faxfont";
+  src: url("Faxfont Fine Regular.otf") format("opentype");
+}
 
-    body {
-      margin: 0;
-      padding: 28px;
-      padding-top: 84px;
-      padding-bottom: 220px; /* space for bottom CD */
-      background-color: #d5cdc0;
-      font-family: "faxfont", Arial, sans-serif;
-      color: #000;
-      text-transform: lowercase;
-      line-height: 1.8;
-      overflow-x: hidden;
-    }
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #d5cdc0;
+  font-family: "faxfont", Arial, sans-serif;
+  color: #000;
+  text-transform: lowercase;
+}
 
-    * { font-weight: normal; }
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-    /* ticker */
-    .ticker-wrap {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      overflow: hidden;
-      background: #000;
-      color: #fff;
-      z-index: 1000;
-    }
+.content {
+  flex: 1 0 auto;
+  padding: 28px;
+  padding-top: 84px;
+}
 
-    .ticker-track {
-      display: flex;
-      width: max-content;
-      animation: ticker-scroll 28s linear infinite;
-    }
+.ticker-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+  z-index: 1000;
+}
 
-    .ticker { display: flex; white-space: nowrap; }
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 28s linear infinite;
+}
 
-    .ticker span {
-      display: inline-block;
-      padding: 0 70px;
-      font-size: 24px;
-      letter-spacing: 0.14em;
-      line-height: 52px;
-    }
+.ticker { display: flex; white-space: nowrap; }
+.ticker span { display: inline-block; padding: 0 70px; font-size: 24px; letter-spacing: 0.14em; line-height: 52px; }
+@keyframes ticker-scroll { from {transform: translateX(0);} to {transform: translateX(-50%);} }
 
-    @keyframes ticker-scroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
+.container { max-width: 900px; margin: 0 auto; }
 
-    .container { max-width: 900px; margin: 0 auto; }
+.profile { width: 200px; height: 200px; background-color: #d5cdc0; overflow: visible; }
+.profile img { width: 100%; height: 100%; transform: translateX(-20px); }
 
-    .profile { width: 200px; height: 200px; background-color: #d5cdc0; overflow: visible; }
-    .profile img { width: 100%; height: 100%; transform: translateX(-20px); }
+h1 { font-size: 44px; margin: 0 0 14px 0; letter-spacing: 0.25em; text-decoration-line: underline; text-decoration-thickness: 2px; text-underline-offset: 7px; text-decoration-color: #000; }
 
-    h1 {
-      font-size: 44px;
-      margin: 0 0 14px 0;
-      letter-spacing: 0.25em;
-      text-decoration-line: underline;
-      text-decoration-thickness: 2px;
-      text-underline-offset: 7px;
-      text-decoration-color: #000;
-    }
+.release { font-size: 20px; color: #0000cc; text-decoration: underline; display: block; margin-bottom: 10px; }
+.divider { margin: 32px 0; border-top: 1px solid #999; }
 
-    .release {
-      font-size: 20px;
-      color: #0000cc;
-      text-decoration: underline;
-      display: block;
-      margin-bottom: 10px;
-    }
+.links { font-size: 24px; letter-spacing: 0.05em; }
+.link-block { margin-bottom: 20px; }
+.links a { color: #000; text-decoration: none; }
 
-    .divider { margin: 32px 0; border-top: 1px solid #999; }
+@media (min-width: 700px) {
+  .layout { display: grid; grid-template-columns: 180px 1fr; gap: 32px; align-items: start; }
+}
 
-    .links { font-size: 24px; letter-spacing: 0.05em; }
-    .link-block { margin-bottom: 20px; }
-    .links a { color: #000; text-decoration: none; }
+/* bottom CD */
+.bottom-cd {
+  flex-shrink: 0;
+  text-align: center;
+  padding: 20px 0;
+  background: transparent;
+}
 
-    @media (min-width: 700px) {
-      .layout {
-        display: grid;
-        grid-template-columns: 180px 1fr;
-        gap: 32px;
-        align-items: start;
-      }
-    }
+.bottom-cd img {
+  width: 190px;
+  max-width: 75vw;
+  height: auto;
+  display: block;
+  margin: 0 auto 12px auto;
+}
 
-    /* bottom CD */
-    .bottom-cd {
-      position: fixed;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 20px; /* default bottom */
-      text-align: center;
-      z-index: 999;
-    }
+.cd-price {
+  font-size: 20px;
+  letter-spacing: 0.08em;
+}
 
-    .bottom-cd img {
-      width: 190px;
-      max-width: 75vw;
-      height: auto;
-      display: block;
-      margin: 0 auto 12px auto;
-    }
-
-    .cd-price {
-      font-size: 20px;
-      letter-spacing: 0.08em;
-    }
-
-    .bottom-cd a { color: inherit; text-decoration: none; }
-  </style>
+.bottom-cd a { color: inherit; text-decoration: none; }
+</style>
 </head>
-
 <body>
 
-  <!-- scrolling ticker -->
-  <div class="ticker-wrap">
-    <div class="ticker-track">
-      <div class="ticker">
-        <span>“i’m still here” — 3/3/2026</span>
-        <span>“i’m still here” cd’s signed by me releasing via bandcamp 3/3/2026</span>
-        <span id="countdown"></span>
-      </div>
-      <div class="ticker">
-        <span>“i’m still here” — 3/3/2026</span>
-        <span>“i’m still here” cd’s signed by me releasing via bandcamp 3/3/2026</span>
-        <span id="countdown-dup"></span>
-      </div>
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <div class="ticker">
+      <span>“i’m still here” — 3/3/2026</span>
+      <span>“i’m still here” cd’s signed by me releasing via bandcamp 3/3/2026</span>
+      <span id="countdown"></span>
+    </div>
+    <div class="ticker">
+      <span>“i’m still here” — 3/3/2026</span>
+      <span>“i’m still here” cd’s signed by me releasing via bandcamp 3/3/2026</span>
+      <span id="countdown-dup"></span>
     </div>
   </div>
+</div>
 
+<div class="content">
   <div class="container">
     <div class="layout">
       <div class="profile">
         <img src="profile.jpg" alt="grunvhaze profile" />
       </div>
-
       <div>
         <h1>grunvhaze</h1>
-
         <a class="release" href="https://distrokid.com/hyperfollow/grunvhaze/im-still-here?ref=release" target="_blank">
           pre save "i'm still here" - debut album
         </a>
-
         <div class="divider"></div>
-
         <div class="links">
           <div class="link-block"><a href="https://open.spotify.com/artist/7aHdvxqX9ccCI1lozcRbdN" target="_blank">spotify</a></div>
           <div class="link-block"><a href="https://soundcloud.com/grunvhaze" target="_blank">soundcloud</a></div>
@@ -172,47 +140,36 @@
       </div>
     </div>
   </div>
+</div>
 
-  <!-- bottom CD -->
-  <div class="bottom-cd" id="bottom-cd">
-    <a href="LINK HERE" target="_blank">
-      <img src="ishcd.png" alt="i'm still here cd" />
-      <div class="cd-price">i'm still here CD | $10</div>
-    </a>
-  </div>
+<!-- bottom CD -->
+<div class="bottom-cd">
+  <a href="LINK HERE" target="_blank">
+    <img src="ishcd.png" alt="i'm still here cd" />
+    <div class="cd-price">i'm still here CD | $10</div>
+  </a>
+</div>
 
-  <script>
-    // countdown
-    const release = new Date("march 3, 2026 00:00:00").getTime();
-    function updateCountdown() {
-      const now = Date.now();
-      let diff = release - now;
-      if (diff <= 0) {
-        setCountdown("00 days 00 hours 00 minutes 00 seconds");
-        return;
-      }
-      const days = Math.floor(diff / (1000*60*60*24));
-      const hours = Math.floor((diff/(1000*60*60))%24);
-      const minutes = Math.floor((diff/(1000*60))%60);
-      const seconds = Math.floor((diff/1000)%60);
-      setCountdown(`${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`);
-    }
-    function setCountdown(text){
-      document.getElementById("countdown").textContent=text;
-      document.getElementById("countdown-dup").textContent=text;
-    }
-    updateCountdown();
-    setInterval(updateCountdown,1000);
-
-    // mobile fix for fixed bottom
-    function fixBottomCD(){
-      const cd = document.getElementById('bottom-cd');
-      cd.style.bottom = (20 + (window.innerHeight - document.documentElement.clientHeight)) + 'px';
-    }
-    window.addEventListener('resize', fixBottomCD);
-    window.addEventListener('orientationchange', fixBottomCD);
-    fixBottomCD();
-  </script>
+<script>
+// countdown
+const release = new Date("march 3, 2026 00:00:00").getTime();
+function updateCountdown() {
+  const now = Date.now();
+  let diff = release - now;
+  if(diff <= 0) { setCountdown("00 days 00 hours 00 minutes 00 seconds"); return; }
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff/(1000*60*60))%24);
+  const minutes = Math.floor((diff/(1000*60))%60);
+  const seconds = Math.floor((diff/1000)%60);
+  setCountdown(`${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`);
+}
+function setCountdown(text){
+  document.getElementById("countdown").textContent=text;
+  document.getElementById("countdown-dup").textContent=text;
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
+</script>
 
 </body>
 </html>
