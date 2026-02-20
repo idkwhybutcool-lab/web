@@ -22,7 +22,7 @@
       margin: 0;
       padding: 28px;
       padding-top: 84px;
-      padding-bottom: 140px; /* prevents overlap with fixed CD */
+      padding-bottom: 240px; /* space for fixed cd */
       background-color: #d5cdc0;
       font-family: "faxfont", Arial, sans-serif;
       color: #000;
@@ -116,7 +116,9 @@
       letter-spacing: 0.05em;
     }
 
-    .link-block { margin-bottom: 20px; }
+    .link-block {
+      margin-bottom: 20px;
+    }
 
     .links a {
       color: #000;
@@ -139,23 +141,22 @@
       color: #000;
       text-decoration: none;
       font-size: 18px;
+      z-index: 998;
     }
 
-    /* ===== bottom cd ===== */
+    /* ===== bottom cd (mobile safe + stable) ===== */
     .bottom-cd {
       position: fixed;
-      bottom: 25px;
       left: 50%;
       transform: translateX(-50%);
+      bottom: calc(20px + env(safe-area-inset-bottom));
       text-align: center;
-      width: 100%;
-      max-width: 260px;
-      padding: 0 10px;
+      z-index: 999;
     }
 
     .bottom-cd img {
-      width: 70%;
-      max-width: 190px;
+      width: 190px;
+      max-width: 75vw;
       height: auto;
       display: block;
       margin: 0 auto 12px auto;
@@ -171,23 +172,12 @@
       text-decoration: none;
     }
 
-    /* smaller phones */
-    @media (max-width: 480px) {
-      .bottom-cd img {
-        width: 65%;
-      }
-
-      .cd-price {
-        font-size: 18px;
-      }
-    }
-
   </style>
 </head>
 
 <body>
 
-  <!-- top scrolling ticker -->
+  <!-- scrolling ticker -->
   <div class="ticker-wrap">
     <div class="ticker-track">
       <div class="ticker">
@@ -195,7 +185,6 @@
         <span>“i’m still here” cd’s signed by me releasing via bandcamp 3/3/2026</span>
         <span id="countdown"></span>
       </div>
-
       <div class="ticker">
         <span>“i’m still here” — 3/3/2026</span>
         <span>“i’m still here” cd’s signed by me releasing via bandcamp 3/3/2026</span>
@@ -233,7 +222,7 @@
 
   <a href="tracklist.jpg" class="smile-link" target="_blank">i'm still here tracklist</a>
 
-  <!-- bottom center cd -->
+  <!-- bottom cd -->
   <div class="bottom-cd">
     <a href="LINK HERE" target="_blank">
       <img src="ishcd.png" alt="i'm still here cd" />
@@ -258,9 +247,7 @@
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
 
-      const text = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
-
-      setCountdown(text);
+      setCountdown(`${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`);
     }
 
     function setCountdown(text) {
