@@ -70,19 +70,13 @@ h1 {
   font-weight: normal;
 }
 
-/* classic link styles */
-a {
+/* keep links ALWAYS classic blue */
+a,
+a:visited,
+a:hover,
+a:active {
   color: #0000cc;
   text-decoration: underline;
-}
-
-a:visited {
-  color: #551a8b;
-}
-
-a:active {
-  color: #000080;
-  transform: translateY(1px);
 }
 
 .release { 
@@ -102,36 +96,25 @@ a:active {
 }
 
 .link-block { 
-  margin-bottom: 20px; 
+  margin-bottom: 24px; 
 }
 
-/* FILE ICON LINKS */
+/* BIG FILE ICON LINKS */
 .link-block a {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  transition: transform 0.1s ease;
+  gap: 18px;
 }
 
 .link-block a::before {
   content: "";
   display: inline-block;
-  width: 22px;
-  height: 22px;
+  width: 42px;      /* WAY bigger */
+  height: 42px;     /* WAY bigger */
   background-image: url("file.png");
   background-size: contain;
   background-repeat: no-repeat;
   image-rendering: pixelated;
-  transition: transform 0.1s ease;
-}
-
-/* subtle hover lift */
-.link-block a:hover {
-  transform: translateY(-1px);
-}
-
-.link-block a:hover::before {
-  transform: translateX(1px);
 }
 
 @media (min-width: 700px) {
@@ -143,7 +126,6 @@ a:active {
   }
 }
 
-/* bottom CD */
 .bottom-cd {
   flex-shrink: 0;
   text-align: center;
