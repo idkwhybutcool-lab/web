@@ -25,8 +25,6 @@ html, body {
   font-family: "px437", monospace;
   color: #000;
   text-transform: lowercase;
-
-  /* crisp pixel rendering */
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -72,10 +70,19 @@ h1 {
   font-weight: normal;
 }
 
-/* classic blue link style */
+/* classic link styles */
 a {
   color: #0000cc;
   text-decoration: underline;
+}
+
+a:visited {
+  color: #551a8b;
+}
+
+a:active {
+  color: #000080;
+  transform: translateY(1px);
 }
 
 .release { 
@@ -96,6 +103,35 @@ a {
 
 .link-block { 
   margin-bottom: 20px; 
+}
+
+/* FILE ICON LINKS */
+.link-block a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: transform 0.1s ease;
+}
+
+.link-block a::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background-image: url("file.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  transition: transform 0.1s ease;
+}
+
+/* subtle hover lift */
+.link-block a:hover {
+  transform: translateY(-1px);
+}
+
+.link-block a:hover::before {
+  transform: translateX(1px);
 }
 
 @media (min-width: 700px) {
@@ -164,7 +200,6 @@ a {
   </div>
 </div>
 
-<!-- bottom CD -->
 <div class="bottom-cd">
   <a href="https://grunvhaze.bandcamp.com/" target="_blank">
     <div class="cd-images">
