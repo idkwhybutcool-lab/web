@@ -13,6 +13,8 @@
 @font-face {
   font-family: "px437";
   src: url("Px437_DOS-V_re_ANK30.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 html, body {
@@ -20,9 +22,13 @@ html, body {
   padding: 0;
   height: 100%;
   background-color: #ffffff;
-  font-family: "faxfont", Arial, sans-serif;
+  font-family: "px437", monospace;
   color: #000;
   text-transform: lowercase;
+
+  /* crisp pixel rendering */
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -52,6 +58,7 @@ body {
   width: 100%; 
   height: 100%; 
   transform: translateX(-20px); 
+  image-rendering: pixelated;
 }
 
 h1 { 
@@ -120,6 +127,7 @@ a {
   max-width: 75vw;
   height: auto;
   display: block;
+  image-rendering: pixelated;
 }
 
 .cd-price {
@@ -163,7 +171,7 @@ a {
       <img src="ishcd.png" alt="i'm still here cd" />
       <img src="ishcd2.png" alt="i'm still here cd alt" />
     </div>
-    <div class="cd-price">i'm still here CD | $10 | available 3/3/2026</div>
+    <div class="cd-price">i'm still here cd | $10 | available 3/3/2026</div>
   </a>
 </div>
 
