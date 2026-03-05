@@ -13,9 +13,10 @@ html, body {
   font-family: Arial, Helvetica, sans-serif;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  background: black;
 }
 
-/* ===== BACKGROUND WITH BLUR ===== */
+/* ===== HERO SECTION ===== */
 .hero {
   position: relative;
   height: 100vh;
@@ -29,17 +30,21 @@ html, body {
   overflow: hidden;
 }
 
+/* Background layer */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("background.jpg") center/cover no-repeat;
+  background-image: url("background.jpg"); /* change to your file */
+  background-size: cover;       /* auto fits screen */
+  background-position: center;  /* always centered */
+  background-repeat: no-repeat;
   filter: blur(4px);
-  transform: scale(1.05);
+  transform: scale(1.08); /* prevents blur edges */
   z-index: -1;
 }
 
-/* ===== FADE IN ANIMATION ===== */
+/* ===== FADE IN ===== */
 .fade-in {
   opacity: 0;
   animation: fadeIn 2s ease forwards;
@@ -55,20 +60,23 @@ html, body {
   to { opacity: 1; }
 }
 
-/* ===== TITLE ===== */
 .hero h1 {
-  font-size: 70px;
-  font-weight: 300;
+  font-size: clamp(40px, 8vw, 80px);
   letter-spacing: 8px;
   margin: 0;
+  font-weight: 300;
 }
 
-/* ===== SCROLL TEXT ===== */
 .scroll-text {
   margin-top: 20px;
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: 3px;
   cursor: pointer;
+  opacity: 0.8;
+}
+
+.scroll-text:hover {
+  opacity: 1;
 }
 
 /* ===== LINKS SECTION ===== */
@@ -85,7 +93,7 @@ html, body {
 .links-section a {
   color: white;
   text-decoration: none;
-  font-size: 26px;
+  font-size: 24px;
   letter-spacing: 4px;
   transition: opacity 0.3s ease;
 }
@@ -98,7 +106,6 @@ html, body {
 
 <body>
 
-<!-- HERO SECTION -->
 <section class="hero">
   <h1 class="fade-in">grunvhaze</h1>
   <div class="scroll-text fade-in-delay" onclick="document.getElementById('links').scrollIntoView();">
@@ -106,7 +113,6 @@ html, body {
   </div>
 </section>
 
-<!-- LINKS -->
 <section id="links" class="links-section">
   <a href="https://open.spotify.com/artist/7aHdvxqX9ccCI1lozcRbdN" target="_blank">spotify</a>
   <a href="https://music.apple.com/us/artist/grunvhaze/1873239417" target="_blank">apple music</a>
