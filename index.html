@@ -66,14 +66,20 @@ html, body {
   font-size: clamp(40px, 8vw, 90px);
   margin: 0;
   font-weight: 300;
-  letter-spacing: 0px;
-  line-height: 0.9;
 
-  /* Glow */
+  letter-spacing: 0px;   /* remove extra spacing */
+  line-height: 0.85;     /* tighter vertical */
+
   text-shadow:
     0 0 10px rgba(255,255,255,0.8),
     0 0 20px rgba(255,255,255,0.6),
     0 0 40px rgba(255,255,255,0.4);
+}
+
+/* tighter crooked letters */
+.crooked span {
+  display: inline-block;
+  margin: 0 -6px;  /* 🔥 pulls letters together more */
 }
 
 /* Crooked letter effect */
