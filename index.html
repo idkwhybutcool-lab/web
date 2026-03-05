@@ -33,7 +33,7 @@ html, body {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: url("background.jpg") center center / cover no-repeat; /* change filename if needed */
+  background: url("background.jpg") center center / cover no-repeat;
   filter: blur(4px);
   transform: scale(1.08);
   z-index: 1;
@@ -45,7 +45,7 @@ html, body {
   z-index: 2;
 }
 
-/* Fade animations */
+/* ===== HERO FADE ===== */
 .fade-in {
   opacity: 0;
   animation: fadeIn 2s ease forwards;
@@ -67,22 +67,15 @@ html, body {
   margin: 0;
   font-weight: 300;
   letter-spacing: -1px;
+  line-height: 1;
 
-  /* Glow */
   text-shadow:
     0 0 10px rgba(255,255,255,0.8),
     0 0 20px rgba(255,255,255,0.6),
     0 0 40px rgba(255,255,255,0.4);
 }
 
-
-/* tighter crooked letters */
-.crooked span {
-  display: inline-block;
-  margin: 0 -6px;  /* 🔥 pulls letters together more */
-}
-
-/* Crooked letter effect */
+/* Crooked letters */
 .crooked span {
   display: inline-block;
   margin: 0 -2px;
@@ -134,6 +127,18 @@ html, body {
 .links-section a:hover {
   opacity: 0.6;
 }
+
+/* ===== SCROLL FADE FOR LINKS ===== */
+.link-fade {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.link-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
 </head>
 
@@ -163,14 +168,28 @@ html, body {
 </section>
 
 <section id="links" class="links-section">
-  <a href="https://open.spotify.com/artist/7aHdvxqX9ccCI1lozcRbdN" target="_blank">spotify</a>
-  <a href="https://music.apple.com/us/artist/grunvhaze/1873239417" target="_blank">apple music</a>
-  <a href="https://soundcloud.com/grunvhaze" target="_blank">soundcloud</a>
-  <a href="https://music.youtube.com/channel/UCYtKMh32mafCvK5OGe6XwCQ" target="_blank">youtube</a>
-  <a href="https://www.instagram.com/grunvhazey/" target="_blank">instagram</a>
-  <a href="https://www.tiktok.com/@grunvhaze" target="_blank">tiktok</a>
-  <a href="https://grunvhaze.bandcamp.com/album/im-still-here" target="_blank">bandcamp / i'm still here cd's</a>
+  <a class="link-fade" href="https://open.spotify.com/artist/7aHdvxqX9ccCI1lozcRbdN" target="_blank">spotify</a>
+  <a class="link-fade" href="https://music.apple.com/us/artist/grunvhaze/1873239417" target="_blank">apple music</a>
+  <a class="link-fade" href="https://soundcloud.com/grunvhaze" target="_blank">soundcloud</a>
+  <a class="link-fade" href="https://music.youtube.com/channel/UCYtKMh32mafCvK5OGe6XwCQ" target="_blank">youtube</a>
+  <a class="link-fade" href="https://www.instagram.com/grunvhazey/" target="_blank">instagram</a>
+  <a class="link-fade" href="https://www.tiktok.com/@grunvhaze" target="_blank">tiktok</a>
+  <a class="link-fade" href="https://grunvhaze.bandcamp.com/album/im-still-here" target="_blank">bandcamp / i'm still here cd's</a>
 </section>
+
+<script>
+const linkFaders = document.querySelectorAll('.link-fade');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.2 });
+
+linkFaders.forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
