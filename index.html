@@ -13,39 +13,39 @@ html, body {
   font-family: Arial, Helvetica, sans-serif;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  background: black;
 }
 
-/* ===== HERO ===== */
+/* ===== HERO SECTION ===== */
 .hero {
   position: relative;
   height: 100vh;
   width: 100%;
   overflow: hidden;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
   text-align: center;
+  color: white;
 }
 
 /* Background image layer */
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: url("background.jpg") center center / cover no-repeat;
+  background: url("background.jpg") center center / cover no-repeat; /* change filename if needed */
   filter: blur(4px);
-  transform: scale(1.08); /* prevents blur edges */
+  transform: scale(1.08);
   z-index: 1;
 }
 
-/* Content above blur */
+/* Content above background */
 .hero-content {
   position: relative;
   z-index: 2;
 }
 
-/* Fade in animation */
+/* Fade animations */
 .fade-in {
   opacity: 0;
   animation: fadeIn 2s ease forwards;
@@ -61,24 +61,48 @@ html, body {
   to { opacity: 1; }
 }
 
+/* ===== TITLE STYLE ===== */
 .hero h1 {
-  font-size: clamp(40px, 8vw, 80px);
-  letter-spacing: 8px;
+  font-size: clamp(40px, 8vw, 90px);
   margin: 0;
   font-weight: 300;
+  letter-spacing: 2px;
 
-  /* GLOW EFFECT */
+  /* Glow */
   text-shadow:
     0 0 10px rgba(255,255,255,0.8),
     0 0 20px rgba(255,255,255,0.6),
     0 0 40px rgba(255,255,255,0.4);
 }
-  
+
+/* Crooked letter effect */
+.crooked span {
+  display: inline-block;
+  margin: 0 -2px;
+}
+
+.crooked span:nth-child(1) { transform: rotate(-5deg) translateY(-2px); }
+.crooked span:nth-child(2) { transform: rotate(3deg) translateY(1px); }
+.crooked span:nth-child(3) { transform: rotate(-4deg) translateY(-1px); }
+.crooked span:nth-child(4) { transform: rotate(4deg) translateY(2px); }
+.crooked span:nth-child(5) { transform: rotate(-2deg) translateY(-1px); }
+.crooked span:nth-child(6) { transform: rotate(3deg) translateY(1px); }
+.crooked span:nth-child(7) { transform: rotate(-3deg) translateY(-2px); }
+.crooked span:nth-child(8) { transform: rotate(5deg) translateY(1px); }
+.crooked span:nth-child(9) { transform: rotate(-4deg) translateY(-1px); }
+
+/* Scroll text */
 .scroll-text {
-  margin-top: 20px;
+  margin-top: 25px;
   font-size: 14px;
   letter-spacing: 3px;
   cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-text:hover {
+  opacity: 1;
 }
 
 /* ===== LINKS SECTION ===== */
@@ -113,17 +137,19 @@ html, body {
 
   <div class="hero-content">
     <h1 class="fade-in crooked">
-  <span>g</span>
-  <span>r</span>
-  <span>u</span>
-  <span>n</span>
-  <span>v</span>
-  <span>h</span>
-  <span>a</span>
-  <span>z</span>
-  <span>e</span>
-</h1>
-    <div class="scroll-text fade-in-delay" onclick="document.getElementById('links').scrollIntoView();">
+      <span>g</span>
+      <span>r</span>
+      <span>u</span>
+      <span>n</span>
+      <span>v</span>
+      <span>h</span>
+      <span>a</span>
+      <span>z</span>
+      <span>e</span>
+    </h1>
+
+    <div class="scroll-text fade-in-delay"
+         onclick="document.getElementById('links').scrollIntoView();">
       scroll ↓
     </div>
   </div>
